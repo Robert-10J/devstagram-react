@@ -1,7 +1,10 @@
+import { Link } from 'react-router-dom'
+import { URLS } from '../../constants'
+
 const Nav = () => {
   return (
     <>
-      <nav className="flex gap-3 items-center">
+      {/* <nav className="flex gap-3 items-center">
         <p className="font-bold text-gray-700 text-sm">
           Hola: <span className="font-normal">Rob</span>
         </p>
@@ -12,11 +15,22 @@ const Nav = () => {
             className="font-bold text-gray-700 text-sm"
           />
         </form>
-      </nav>
+      </nav> */}
 
       <nav className="flex gap-3 items-center">
-        <a href="{{ route('login') }}" className="font-bold uppercase text-gray-600 text-sm">Login</a>
-        <a href="{{ route('register') }}" className="font-bold uppercase text-gray-600 text-sm">Crear Cuenta</a>
+        {
+          URLS.map(({ id, url, label }) => {
+            return (
+              <Link
+                key={id}
+                to={url}
+                className="font-bold uppercase text-gray-600 text-sm"
+              >
+                { label }
+              </Link>
+            )
+          })
+        }
       </nav>
     </>
   )

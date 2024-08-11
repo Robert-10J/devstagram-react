@@ -1,4 +1,7 @@
-import Header from '../components/Header'
+import { Outlet } from 'react-router-dom'
+import Header from '../components/head/Header'
+import { year } from '../helpers'
+
 
 const Layout = () => {
   return (
@@ -6,14 +9,11 @@ const Layout = () => {
       <Header/>
 
       <main className="container mx-auto mt-10">
-        <h2 className="font-black text-center text-3xl mb-10">
-          Titulo
-        </h2>
-        Children
+        <Outlet/>
       </main>
 
       <footer className="text-center p-5 font-bold text-gray-500">
-        DevStagram {Date()}
+        DevStagram { year }
       </footer>
     </>
   )
