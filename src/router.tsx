@@ -1,7 +1,8 @@
 import { createBrowserRouter } from 'react-router-dom';
 import App from './App';
 import Layout from './layouts/Layout';
-import Login from './pages/Login';
+import Login from './pages/auth/Login';
+import Register from './pages/auth/Register';
 
 const router = createBrowserRouter([
   {
@@ -15,6 +16,10 @@ const router = createBrowserRouter([
       {
         path: '/iniciar-sesion',
         element: <Login/>
+      },
+      {
+        path: '/crear-cuenta',
+        element: <Register/>
       }
     ]
   }

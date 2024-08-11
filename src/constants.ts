@@ -6,7 +6,7 @@ export const URLS = [
   },
   {
     id: 2,
-    url: '/cerrar-sesion',
-    label: 'Cerrar Sesión'
+    url: '/crear-cuenta',
+    label: 'Crear cuenta'
   }
 ]
