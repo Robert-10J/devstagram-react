@@ -5,7 +5,7 @@ type Props = {
   preveailOnMount?: boolean
 }
 export default function useDocumentTitle(
-  { title, preveailOnMount }: { title: string, preveailOnMount?: boolean }
+  { title, preveailOnMount }: Props
 ) {
   const defaultTitle = useRef(document.title)
 
