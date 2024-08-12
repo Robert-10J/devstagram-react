@@ -4,18 +4,13 @@ import Error from '../../components/common/Error'
 import TitlePage from '../../components/common/TitlePage'
 import ImageAuthPages from '../../components/common/ImageAuthPages'
 import useSetDocumentTitle from '../../hooks/useSetDocumentTitle'
+import type { RegisterForm } from '../../types'
 
-type RegisterForm = {
-  name: string
-  username: string
-  email: string
-  password: string
-  password_confirmation: string
-}
+
 
 const Register = () => {
   useSetDocumentTitle({
-    title: 'DevStagram - Crear Cuenta',
+    title: 'Crear Cuenta',
     preveailOnMount: true,
   })
 

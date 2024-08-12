@@ -1,12 +1,22 @@
+import { useForm } from 'react-hook-form'
+import type { LoginForm } from '../../types'
 import TitlePage from '../../components/common/TitlePage'
 import useSetDocumentTitle from '../../hooks/useSetDocumentTitle'
 import ImageAuthPages from '../../components/common/ImageAuthPages'
+import { VALIDATION_LOGIN } from '../../validations'
+import Error from '../../components/common/Error'
 
 const Login = () => {
   useSetDocumentTitle({
-    title: 'DevStagram - Iniciar Sesión',
+    title: 'Iniciar Sesión',
     preveailOnMount: true,
   })
+
+  const { handleSubmit, register, formState: { errors } } = useForm<LoginForm>()
+
+  const handleSubmitLogin = (data: LoginForm) => {
+    console.log(data)
+  }
 
   return (
     <>
@@ -20,7 +30,12 @@ const Login = () => {
         />
 
         <div className="md:w-4/12 bg-white p-6 rounded-lg shadow">
-          <form action="" method="POST" noValidate>
+          <form
+            action=""
+            method="POST"
+            noValidate
+            onSubmit={handleSubmit(handleSubmitLogin)}
+          >
             <div className="mb-5">
               <label
                 htmlFor="email"
@@ -29,10 +44,11 @@ const Login = () => {
               <input
                 type="email"
                 id="email"
-                name="email"
                 placeholder="E-mail"
                 className="border p-3 w-full rounded-lg"
+                {...register('email', VALIDATION_LOGIN.email) }
               />
+              { errors.email && ( <Error> {errors.email.message} </Error>) }
             </div>
 
             <div className="mb-5">
@@ -43,14 +59,19 @@ const Login = () => {
               <input
                 type="password"
                 id="password"
-                name="password"
                 placeholder="Contraseña"
                 className="border p-3 w-full rounded-lg"
+                { ...register('password', VALIDATION_LOGIN.password) }
               />
+              { errors.password && ( <Error> {errors.password.message} </Error>) }
             </div>
 
             <div className="mb-5">
-              <input type="checkbox" name="remember" id="remember" />
+              <input
+                type="checkbox"
+                id="remember"
+                { ...register('remember') }
+              />
               <label
                 className="text-gray-500 text-sm px-2"
                 htmlFor="remember"

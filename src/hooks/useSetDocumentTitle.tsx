@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react'
 
 type Props = {
   title: string
@@ -10,7 +10,7 @@ export default function useSetDocumentTitle(
   const defaultTitle = useRef(document.title)
 
   useEffect(() => {
-    document.title = title
+    document.title = 'DevStagram - ' + title
   }, [title])
 
   useEffect(() => {
