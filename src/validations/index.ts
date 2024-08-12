@@ -1,10 +1,10 @@
 export const VALIDATION_LOGIN = {
   email: {
-    required: true,
+    required: 'El email es requerido',
     pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/i
   },
   password: {
-    required: true
+    required: 'La contraseña es requerida',
   }
 }
 

@@ -1,6 +1,6 @@
 import { Outlet } from 'react-router-dom'
-import Header from '../components/head/Header'
 import { year } from '../helpers'
+import Header from '../components/header/Header'
 
 
 const Layout = () => {

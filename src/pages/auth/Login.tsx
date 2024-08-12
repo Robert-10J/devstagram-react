@@ -1,15 +1,17 @@
+import ImageAuthPages from '../../components/common/ImageAuthPages'
+import TitlePage from '../../components/common/TitlePage'
+
 const Login = () => {
   return (
     <>
-      <h2 className="font-black text-center text-3xl mb-10">
-        Iniciar Sesión
-      </h2>
+      <TitlePage titlePage={'Iniciar Sesión'} />
 
       <div className="md:flex md:justify-center md:gap-10 md:items-center">
 
-        <div className="md:w-6/12 p-5">
-          <img src="/img/login.jpg" alt="Imagen registro de usuarios" />
-        </div>
+        <ImageAuthPages
+          urlImg={'/img/login.jpg'}
+          textAlt={'Imagen aluciva a inicio de sesión'}
+        />
 
         <div className="md:w-4/12 bg-white p-6 rounded-lg shadow">
           <form action="" method="POST" noValidate>
