@@ -1,9 +1,9 @@
 import TitlePage from '../../components/common/TitlePage'
-import useDocumentTitle from '../../hooks/useDocumentTitle'
+import useSetDocumentTitle from '../../hooks/useSetDocumentTitle'
 import ImageAuthPages from '../../components/common/ImageAuthPages'
 
 const Login = () => {
-  useDocumentTitle({
+  useSetDocumentTitle({
     title: 'DevStagram - Iniciar Sesión',
     preveailOnMount: true,
   })

@@ -3,7 +3,7 @@ import { VALIDATION_REGISTER } from '../../validations'
 import Error from '../../components/common/Error'
 import TitlePage from '../../components/common/TitlePage'
 import ImageAuthPages from '../../components/common/ImageAuthPages'
-import useDocumentTitle from '../../hooks/useDocumentTitle'
+import useSetDocumentTitle from '../../hooks/useSetDocumentTitle'
 
 type RegisterForm = {
   name: string
@@ -14,7 +14,7 @@ type RegisterForm = {
 }
 
 const Register = () => {
-  useDocumentTitle({
+  useSetDocumentTitle({
     title: 'DevStagram - Crear Cuenta',
     preveailOnMount: true,
   })
