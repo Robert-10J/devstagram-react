@@ -25,7 +25,6 @@ const Login = () => {
                 placeholder="E-mail"
                 className="border p-3 w-full rounded-lg"
               />
-              {/* <p className="bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center">{{ $message }}</p> */}
             </div>
 
             <div className="mb-5">

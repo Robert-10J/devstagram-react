@@ -10,7 +10,7 @@ export const VALIDATION_LOGIN = {
 
 export const VALIDATION_REGISTER = {
   name: {
-    required: true,
+    required: 'El nombre es requerido',
     minLength: {
       value: 4,
       message: 'El nombre es demasiado corto'
@@ -21,7 +21,7 @@ export const VALIDATION_REGISTER = {
     }
   },
   username: {
-    required: true,
+    required: 'El nombre de usuario es requerido',
     minLength: {
       value: 4,
       message: 'El nombre de usuario es demasiado corto'
