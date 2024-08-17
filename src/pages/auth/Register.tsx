@@ -6,8 +6,6 @@ import ImageAuthPages from '../../components/common/ImageAuthPages'
 import useSetDocumentTitle from '../../hooks/useSetDocumentTitle'
 import type { RegisterForm } from '../../types'
 
-
-
 const Register = () => {
   useSetDocumentTitle({
     title: 'Crear Cuenta',

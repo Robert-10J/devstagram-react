@@ -20,6 +20,10 @@ const router = createBrowserRouter([
       {
         path: '/crear-cuenta',
         element: <Register/>
+      },
+      {
+        path: '/username',
+        element: <h1>Bienvenido a tu cuenta</h1>
       }
     ]
   }

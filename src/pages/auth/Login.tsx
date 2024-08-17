@@ -1,10 +1,10 @@
 import { useForm } from 'react-hook-form'
 import type { LoginForm } from '../../types'
-import TitlePage from '../../components/common/TitlePage'
-import useSetDocumentTitle from '../../hooks/useSetDocumentTitle'
-import ImageAuthPages from '../../components/common/ImageAuthPages'
 import { VALIDATION_LOGIN } from '../../validations'
 import Error from '../../components/common/Error'
+import TitlePage from '../../components/common/TitlePage'
+import ImageAuthPages from '../../components/common/ImageAuthPages'
+import useSetDocumentTitle from '../../hooks/useSetDocumentTitle'
 
 const Login = () => {
   useSetDocumentTitle({
