@@ -1,10 +1,11 @@
 import { useForm } from 'react-hook-form'
 import { VALIDATION_REGISTER } from '../../validations'
-import Error from '../../components/common/Error'
 import TitlePage from '../../components/common/TitlePage'
-import ImageAuthPages from '../../components/common/ImageAuthPages'
+import ImageAuthPages from '@/components/common/ImageAuthPages'
 import useSetDocumentTitle from '../../hooks/useSetDocumentTitle'
 import type { RegisterForm } from '../../types'
+import axiosClient from '../../config/axiosClient'
+import Error from '@/components/common/Error'
 
 const Register = () => {
   useSetDocumentTitle({
@@ -12,11 +13,20 @@ const Register = () => {
     preveailOnMount: true,
   })
 
-  const { register, handleSubmit, formState: { errors }, reset, setValue } = useForm<RegisterForm>()
+  const { register, handleSubmit, formState: { errors }, reset, setValue, setError } = useForm<RegisterForm>()
 
-  const createAccount = (data: RegisterForm) => { 
-    console.log(data)
+  const createAccount = async (data: RegisterForm) => { 
+    try {
+      console.log(data)
+      const response = await axiosClient.post('/register', data);
+      console.log(response.data)
+    } catch (error) {
+      console.log(error.response.data.errors)
+      setError(error.response.data.errors[0])
+    }
   }
+
+  
 
   return (
     <>

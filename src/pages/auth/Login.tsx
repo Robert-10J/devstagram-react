@@ -5,6 +5,7 @@ import Error from '../../components/common/Error'
 import TitlePage from '../../components/common/TitlePage'
 import ImageAuthPages from '../../components/common/ImageAuthPages'
 import useSetDocumentTitle from '../../hooks/useSetDocumentTitle'
+import axiosClient from '../../config/axiosClient'
 
 const Login = () => {
   useSetDocumentTitle({
@@ -14,8 +15,13 @@ const Login = () => {
 
   const { handleSubmit, register, formState: { errors } } = useForm<LoginForm>()
 
-  const handleSubmitLogin = (data: LoginForm) => {
-    console.log(data)
+  const handleSubmitLogin = async (data: LoginForm) => {
+    try {
+      const response = await axiosClient('/register', data);
+      console.log(response)
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   return (
