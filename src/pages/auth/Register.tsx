@@ -1,11 +1,11 @@
 import { useForm } from 'react-hook-form'
-import { VALIDATION_REGISTER } from '../../validations'
-import TitlePage from '../../components/common/TitlePage'
-import ImageAuthPages from '@/components/common/ImageAuthPages'
-import useSetDocumentTitle from '../../hooks/useSetDocumentTitle'
-import type { RegisterForm } from '../../types'
-import axiosClient from '../../config/axiosClient'
+import { VALIDATION_REGISTER } from '@/validations'
+import type { RegisterForm } from '@/types'
+import axiosClient from '@/config/axiosClient'
 import Error from '@/components/common/Error'
+import TitlePage from '@/components/common/TitlePage'
+import useSetDocumentTitle from '@/hooks/useSetDocumentTitle'
+import ImageAuthPages from '@/components/common/ImageAuthPages'
 
 const Register = () => {
   useSetDocumentTitle({
@@ -15,18 +15,40 @@ const Register = () => {
 
   const { register, handleSubmit, formState: { errors }, reset, setValue, setError } = useForm<RegisterForm>()
 
-  const createAccount = async (data: RegisterForm) => { 
+  /* const createAccount = async (data: RegisterForm) => { 
     try {
       console.log(data)
       const response = await axiosClient.post('/register', data);
       console.log(response.data)
     } catch (error) {
+      const errors = Object.entries(error.response.data.errors)
+      errors.forEach(([ field, message]) => {
+        setError(field as keyof RegisterForm, {
+          type: 'server',
+          message
+        })
+      })
+    }
+  } */
+
+  const createAccount = async (data: RegisterForm) => {
+    try {
+      console.log(data)
+      const response = await axiosClient.post('/register', data)
+      console.log(response.data)
+    } catch (error) {
       console.log(error.response.data.errors)
-      setError(error.response.data.errors[0])
+      const errors = Object.entries(error.response.data.errors);
+      errors.forEach(([field, messages]) => {
+        (messages as string[]).forEach((message) => {
+          setError(field as keyof RegisterForm, {
+            type: 'server',
+            message: message
+          });
+        });
+      });
     }
   }
-
-  
 
   return (
     <>
@@ -40,8 +62,8 @@ const Register = () => {
         />
 
         <div className="md:w-4/12 bg-white p-6 rounded-lg shadow">
-          <form 
-            action="" 
+          <form
+            action=""
             method="POST"
             noValidate
             onSubmit={handleSubmit(createAccount)}
@@ -58,7 +80,7 @@ const Register = () => {
                 className="border p-3 w-full rounded-lg @error"
                 {...register('name', VALIDATION_REGISTER.name)}
               />
-              { errors.name && ( <Error> {errors.name.message} </Error>) }
+              {errors.name && (<Error> {errors.name.message} </Error>)}
             </div>
 
             <div className="mb-5">
@@ -73,7 +95,7 @@ const Register = () => {
                 className="border p-3 w-full rounded-lg"
                 {...register('username', VALIDATION_REGISTER.username)}
               />
-              { errors.username && (<Error> {errors.username.message} </Error>) }
+              {errors.username && (<Error> {errors.username.message} </Error>)}
             </div>
 
             <div className="mb-5">
@@ -88,7 +110,7 @@ const Register = () => {
                 className="border p-3 w-full rounded-lg"
                 {...register('email', VALIDATION_REGISTER.email)}
               />
-              { errors.email && ( <Error> {errors.email.message} </Error>) }
+              {errors.email && (<Error> {errors.email.message} </Error>)}
             </div>
 
             <div className="mb-5">
@@ -103,7 +125,7 @@ const Register = () => {
                 className="border p-3 w-full rounded-lg"
                 {...register('password', VALIDATION_REGISTER.password)}
               />
-              { errors.name && ( <Error> {errors.name.message} </Error>) }
+              {errors.password && (<Error> {errors.password.message?.toString()} </Error>)}
             </div>
 
             <div className="mb-5">
@@ -116,7 +138,7 @@ const Register = () => {
                 id="password_confirmation"
                 placeholder="Repetir Contraseña"
                 className="border p-3 w-full rounded-lg"
-                { ...register('password_confirmation')}
+                {...register('password_confirmation')}
               />
             </div>
 
